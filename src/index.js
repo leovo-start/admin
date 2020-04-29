@@ -6,6 +6,7 @@ import {createStore,applyMiddleware} from "redux"
 import {RootReducer} from "./models/reducer"
 import thnuk from "redux-thunk"
 import {composeWithDevTools} from "redux-devtools-extension"
+import "./assets/iconfont/iconfont.css"
 const store = createStore(RootReducer,composeWithDevTools(applyMiddleware(thnuk)))
 ReactDOM.render(
   <Provider store={store}>

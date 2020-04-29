@@ -15,6 +15,9 @@ import Success from "./pages/error/success"
 import Error from "./pages/error/error"
 import Basics from "./pages/proflie/basics"
 import LineGhet from "./pages/proflie/lineghet"
+import Error1 from "./pages/result/error1"
+import Error2 from "./pages/result/error2"
+import Error3 from "./pages/result/error3"
 export default class RouterZhu extends Component {
     render() {
         return (
@@ -37,6 +40,9 @@ export default class RouterZhu extends Component {
                        <Route path ="/admin/proflie/height" component={LineGhet}/>
                        <Route path ="/admin/account/center" component={Account}/>
                        <Route path ="/admin/account/settings" component={Setting}/>
+                       <Route path ="/admin/error/403" component={Error1}/>
+                       <Route path ="/admin/error/404" component={Error2}/>
+                       <Route path ="/admin/error/500" component={Error3}/>
                    </Switch>
                    </Admin>
                </Router>

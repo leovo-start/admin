@@ -26,9 +26,7 @@ class Account extends Component {
     PressEnter = () =>{
     let arr = this.state.list;
     arr.push(this.state.inputValue)
-    console.log(arr)
-    this.state.inputValue = "";
-    this.setState({list:arr,visible:false})    
+    this.setState({list:arr,visible:false,inputValue:""})  
     }
     // 骨架控件
     showSkeleton = () => {
@@ -44,7 +42,7 @@ class Account extends Component {
         let flot = visible?"none":"inline-block";
         return (
         <Row> 
-             <Col span={5} style={{marginRight:20}}>  
+             <Col span={5} style={{margin:"0 15px"}}>  
                    <Card>
                    <Skeleton loading={this.state.loading} 
                         className="Skeleton"
@@ -98,8 +96,6 @@ class Account extends Component {
                        {
                         (
                             this.props.accountlist.map((item,index)=>{
-                                let list = item.toJS();
-                                let arr = list.item;
                               return (
                                  <div className="account-title" key={index}>
                                     <h3>{item.get("title")}</h3>

@@ -3,6 +3,7 @@ import {Icon,Input} from "antd"
 import {connect} from "react-redux"
 import {header_onblur,header_onfocus,header_mouse,header_leave} from "../../models/header/action"
 import "./index.less"
+import Selectd from "./select"
 class Header extends Component {
 
     
@@ -11,6 +12,8 @@ class Header extends Component {
         return (
             <div className="header">
                <div className="header-left">
+                   {this.props.menuName}
+                   {console.log(this.props.menuName)}
                 </div>
                 <div className="header-right">
                 <Icon type="search" className="header-Icon" 
@@ -26,11 +29,9 @@ class Header extends Component {
                     <Icon type="question-circle" className="header-Icon"/>
                     <div className="header-user">使用文档</div>
                     <Icon type="bell" className="header-Icon"/> 
-                    <span>
-                        <img src="" alt=""/>
-                        <span>欢迎,李俊鹏</span>  
-                    </span>
+                    <Selectd/>                   
                 </div>
+                
             </div>
         )
     }
@@ -38,7 +39,8 @@ class Header extends Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         focused: state.getIn(["header","focused"]),
-        mouseIn: state.getIn(["header","mouseIn"])
+        mouseIn: state.getIn(["header","mouseIn"]),
+        menuName:state.getIn(["header","menuName"]),
     }
 }
 export default connect(mapStateToProps,{header_onblur,header_onfocus,header_mouse,header_leave})(Header)

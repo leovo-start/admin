@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import {Card,Result,Button} from "antd"
-export default class Error1 extends Component {
+export default class Error3 extends Component {
     render() {
         return (
-        <Card>
-             <Result
-            status="403"
-            title="403"
-            subTitle="Sorry,你没有访问的权限"
+          <Card>
+        <Result
+            status="500"
+            title="500"
+            subTitle="Sorry,服务器端发生了错误"
             extra={<Button type="primary">Back Home</Button>}
           />
-        </Card>
+          </Card>
         )
     }
 }

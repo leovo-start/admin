@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import {Link,withRouter} from "react-router-dom"
+import {Link} from "react-router-dom"
 import {Menu,Icon,Button,Layout} from "antd"
 import {MenuList} from "../../config"
-import {header_true,header_false} from "../../models/header/action"
+import {header_true,header_false,switchMenu} from "../../models/header/action"
 import {connect} from "react-redux"
 import "./index.less"
 const MenuItem = Menu.Item;
@@ -12,10 +12,18 @@ const { Sider } = Layout;
 
       state = {
         collapsed: false,
+        currentKey:"",
       };
     componentWillMount(){
     const menu = this.MenuItems(MenuList);
-    this.setState({menu})
+    let currentKey = window.location.hash.replace(/#|\?.*$/g,"")
+    this.setState({menu,currentKey})
+    }
+    handleClick = ({item,key}) =>{
+      this.props.switchMenu(item.props.title)
+      this.setState({
+        currentKey:key   
+      })
     }
     MenuItems = (data) =>{
        return  data.map(item=>{
@@ -48,26 +56,28 @@ const { Sider } = Layout;
         });
         this.state.collapsed?header_false():header_true();
       };
-    render() {    
+    render() {   
+      const  {collapsed } = this.state;
+      let flag = collapsed?"112px":"233px"
         return (
-    <Layout  className="nav-left">
+      <Layout  className="nav-left">
                <Sider
                 trigger={null} 
                 collapsed={this.state.collapsed}          
                >
-                <div className="nav-search">
-                <Button type="primary" onClick={this.toggleCollapsed} style={{ marginBottom: 16 }}>
+                <Button type="primary" onClick={this.toggleCollapsed} style={{ marginLeft:flag,marginTop:12 }}>
                     <Icon type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} />
-                </Button>  
-                </div>   
+                </Button>   
                  <div className="nav-content">
                      <img src="/logo-ant.svg" alt=""/>
                    {
-                    this.state.collapsed?"":<h3>Ant Design管理系统</h3>
+                    this.state.collapsed?null:<h3>Ant Design管理系统</h3>
                    }
                  </div>   
                <Menu theme="dark"
-                  mode="inline"    
+                  mode="inline" 
+                  selectedKeys={this.state.currentKey}
+                  onClick={this.handleClick}   
                   >
                      {this.state.menu}
                  </Menu>
@@ -77,4 +87,4 @@ const { Sider } = Layout;
     }
 }
 
-export default connect(null,{header_true,header_false})(NavLeft)
+export default connect(null,{header_true,header_false,switchMenu})(NavLeft)

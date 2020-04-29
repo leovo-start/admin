@@ -15,19 +15,19 @@ class Admin extends Component {
                 <Row>
                 {
                 menu?<Col span={2}><NavLeft/></Col>:
-                <Col span={5}><NavLeft/></Col>
+                <Col span={3}><NavLeft/></Col>
                 }
                 {
                 menu?<Col span={22} className="main">
                    <Header/>
-                    <Row  style={{ margin: '10px 10px 10px 0'}}>
+                    <Row  style={{ margin: '10px 10px 10px 15px'}}>
                       {this.props.children}  
                     </Row>    
                     <Footer/>  
                    </Col>:
-                    <Col span={19} className="main">
+                    <Col span={21} className="main">
                    <Header/>
-                    <Row  style={{ margin: '10px 10px 10px 0'}}>
+                    <Row  style={{ margin: '10px 10px 10px 15px'}}>
                       {this.props.children}  
                     </Row>    
                     <Footer/>  

@@ -34,8 +34,8 @@ class UserForm extends Component {
           },
           labelCol: {
             xs: {
-              span: 24,
-              offset:12,
+              span: 12,
+              offset:6,
             },
             sm: {
               span: 12,

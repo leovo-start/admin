@@ -1,5 +1,5 @@
-import {HEADER_ONBLUR,HEADER_ONFOCUS,HEADER_LEAVE,HEADER_MOUSE,HEADER_TRUE,HEADER_FALSE} from "../content"
-
+import {HEADER_ONBLUR,HEADER_ONFOCUS,HEADER_LEAVE,HEADER_MOUSE,HEADER_TRUE,HEADER_FALSE,SWITCH_MENU} from "../content"
+import {fromJS} from "immutable"
 export const header_onfocus = () =>{
     return {
         type:HEADER_ONFOCUS
@@ -28,5 +28,11 @@ export const header_true = () =>{
 export const header_false = () =>{
     return {
         type:HEADER_FALSE
+    }
+}
+export const switchMenu = (menuName) =>{
+    return {
+        type:SWITCH_MENU,
+        menuName:fromJS(menuName)
     }
 }
